@@ -1,14 +1,7 @@
-interface Draggable {
-    dragStartHandler(event: DragEvent): void;
-    dragEndHandler(event: DragEvent): void;
-}
+/// <reference path='dd-interfaces.ts' />
+/// <reference path='project-model.ts' />
 
-interface DragTarget {
-    dragOverHandler(event: DragEvent): void;
-    dropHandler(event: DragEvent): void;
-    dragLeaveHandler(event: DragEvent): void;
-}
-
+namespace App {
 interface Validatable {
     value: string | number;
     required?: boolean;
@@ -315,16 +308,11 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> implements Drag
     }
 }
 
-enum ProjectStatus { Active, Finished }
 
 
-class Project {
-    constructor(public id: string, public title: string, public description: string, public people: number,  public status: ProjectStatus) {
-
-    }
+new ProjectInput();
+const projectState = ProjectState.getInstance();
+new ProjectList('active');
+new ProjectList('finished');
 }
 
-let a = new ProjectInput();
-const projectState = ProjectState.getInstance();
-const activeProjectList = new ProjectList('active');
-const aaactiveProjectList = new ProjectList('finished');
